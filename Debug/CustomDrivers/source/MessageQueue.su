@@ -1,0 +1,3 @@
+../CustomDrivers/source/MessageQueue.c:44:6:MessageQueueCreate	40	static
+../CustomDrivers/source/MessageQueue.c:70:6:MessageQueuePut	24	static
+../CustomDrivers/source/MessageQueue.c:86:6:MessageQueueGet	48	static
