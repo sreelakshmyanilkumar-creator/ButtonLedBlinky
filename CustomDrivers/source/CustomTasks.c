@@ -89,7 +89,7 @@ THREAD_HANDLER ThreadHandler[] = {
 //*
 bool CustomCreateTasks()
 {
-	bool blRet = RET_FAILURE;
+	bool blRet = RET_SUCCESS;
     uint8_t ucMaxThreadCount = 0;
     osThreadDef_t ThreadConf = {0};
     ucMaxThreadCount = sizeof(ThreadHandler)/sizeof(ThreadHandler[0]);
@@ -111,11 +111,11 @@ bool CustomCreateTasks()
     	if(ThreadHandler[ucIndex].lThreadId == NULL)
     	{
     		printf("Error: Failed to create task: %s\n", ThreadConf.name);
+    		blRet = RET_FAILURE;
     	}
     	else
     	{
     		printf("Task Created - %s\n", ThreadConf.name);
-    		blRet = RET_SUCCESS;
     	}
     }
 

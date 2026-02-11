@@ -49,11 +49,7 @@ void LedBlinkyTask1(void const *pArgument)
 	for(;;)
 	{
 		printf("Waiting for LED Pattern1 Event...\n");
-
 		ProcessTaskSignalWait(SIGNAL_LED_TOGGLE1, &Evt);
-
-		printf("Received LED Pattern SIGNAL\n");
-		printf("Evt.value.signals = %lx\n", Evt.value.signals);
 
 		if(Evt.value.signals == SIGNAL_LED_TOGGLE1)
 		{
@@ -79,11 +75,7 @@ void LedBlinkyTask2(void const *pArgument)
 	for(;;)
 	{
 		printf("Waiting for LED Pattern2 Event...\n");
-
 		ProcessTaskSignalWait(SIGNAL_LED_TOGGLE2, &Evt);
-
-		printf("Received LED Pattern2 SIGNAL\n");
-		printf("Evt.value.signals 2 = %lx\n", Evt.value.signals);
 
 		if(Evt.value.signals == SIGNAL_LED_TOGGLE2)
 		{
@@ -138,7 +130,6 @@ osStatus LedSemaphoreRelease()
 	osStatus SemRet = osErrorOS;
 
 	SemRet = SemaphoreRelease();
-	printf("SemRet = %d\n", SemRet);
 
 	return SemRet;
 }

@@ -52,8 +52,6 @@ void ProcessTask(void const *pArgument)
 	if(PushButtonMessageQueueGet(&stEvent) != RET_FAILURE)
 	{
 		lCurrentState = stEvent.value.v;
-		//printf("lCurrentState - ProcessTask %d\n", lCurrentState);
-		//printf("lLastState - ProcessTask %d\n", lLastState);
 
 		if(lCurrentState != lLastState)
 		{
@@ -69,11 +67,6 @@ void ProcessTask(void const *pArgument)
 			}
 
 			lLastState = lCurrentState;
-			printf("lLastState - ProcessTask %d\n", lLastState);
-		}
-		else
-		{
-			//printf("State Same\n");
 		}
 	}
 
@@ -84,6 +77,7 @@ void ProcessTask(void const *pArgument)
 //******************************.ProcessTaskSignalSet.**************************
 //Purpose : To set event signal
 //Inputs  : ThreadId - Thread Id of the waiting thread
+//			Signal -
 //Outputs : None
 //Return  : Boolean value - Upon success it will return true , else false
 //Notes   : None

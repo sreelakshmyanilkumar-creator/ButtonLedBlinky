@@ -25,6 +25,7 @@
 
 //******************************* Local Constants ******************************
 #define SIGNAL_ERR		(0x80000000)
+
 //******************************* Local Variables ******************************
 
 //******************************* Local Functions ******************************
@@ -55,6 +56,7 @@ bool SignalSet(osThreadId ThreadId, int32_t Signal)
 //**********************************.SignalWait.********************************
 //Purpose : To wait for the event signal
 //Inputs  : Signal - Signal flag
+//			Evt - osEvent structure variable
 //Return  : Boolean value - Upon success it will return true , else false
 //Notes   : None
 //*
