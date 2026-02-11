@@ -57,8 +57,7 @@ void ReadPushButtonTask(void const *pArgument)
   for(;;)
   {
 	  lCurrentState = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
-	   printf("lCurrentState %d\n", lCurrentState);
-	   PushButtonMessageQueuePut(&lCurrentState);
+	  PushButtonMessageQueuePut(&lCurrentState);
 	  osDelay(5);
   }
 }

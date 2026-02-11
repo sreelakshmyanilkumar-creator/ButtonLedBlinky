@@ -97,7 +97,6 @@ osStatus LedSemaphoreRelease()
 	osStatus SemRet = osErrorOS;
 
 	SemRet = SemaphoreRelease();
-	printf("SemRet = %d\n", SemRet);
 
 	return SemRet;
 }
@@ -115,10 +114,6 @@ bool LedBlinkPattern()
 
 	while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_RESET)
 	{
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
-		osDelay(100);
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
-		osDelay(100);
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
 		osDelay(100);
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
