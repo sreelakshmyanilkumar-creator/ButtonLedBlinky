@@ -3,15 +3,15 @@
 //  All Rights Reserved
 //******************************************************************************
 //
-// File     : Led.h
-// Summary  : To Blink LED in different patterns
+// File     : Signals.h
+// Summary  : For event management
 // Note     : None
 // Author   : Sreelakshmy M.A.
-// Date     : 09/02/2026
+// Date     : 11/02/2026
 //
 //******************************************************************************
-#ifndef _LED_H_
-#define _LED_H_
+#ifndef _SIGNALS_H_
+#define _SIGNALS_H_
 
 //******************************* Include Files ********************************
 #include <stdio.h>
@@ -22,19 +22,15 @@
 //******************************* Global Types *********************************
 
 //***************************** Global Constants *******************************
+#define SIGNAL_LED_TOGGLE1  (0x01)  // Bit 0
+#define SIGNAL_LED_TOGGLE2  (0x02)  // Bit 1
 
 //***************************** Global Variables *******************************
-extern osThreadId LedThreadId1;
-extern osThreadId LedThreadId2;
 
 //**************************** Forward Declarations ****************************
-void LedBlinkyTask1(void const *pArgument);
-void LedBlinkyTask2(void const *pArgument);
-bool LedSemaphoreInit();
-bool LedSemaphoreWait();
-osStatus LedSemaphoreRelease();
-bool LedBlinkPattern1();
-bool LedBlinkPattern2();
+bool SignalSet(osThreadId ThreadId, int32_t Signal);
+bool SignalWait(int32_t Signal, osEvent* Evt);
+bool SignalClear(osThreadId ThreadId, int32_t Signal);
 
-#endif //_LED_H_
+#endif //_SIGNALS_H_
 //EOF

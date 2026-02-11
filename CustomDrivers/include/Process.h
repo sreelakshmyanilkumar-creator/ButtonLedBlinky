@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include "CustomTasks.h"
 
 //******************************* Global Types *********************************
 
@@ -26,6 +27,9 @@
 
 //**************************** Forward Declarations ****************************
 void ProcessTask(void const * argument);
+bool ProcessTaskSignalSet(osThreadId ThreadId, int32_t Signal);
+bool ProcessTaskSignalWait(int32_t Signal, osEvent* Evt);
+bool ProcessTaskSignalClear(osThreadId ThreadId, int32_t Signal);
 
 #endif //_PROCESS_H_
 //EOF

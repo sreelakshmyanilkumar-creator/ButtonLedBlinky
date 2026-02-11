@@ -21,6 +21,8 @@
 #include "PushButton.h"
 #include "CustomStart.h"
 #include "Led.h"
+#include "Signals.h"
+#include "Process.h"
 
 //******************************* Local Types **********************************
 
@@ -43,32 +45,87 @@ void ProcessTask(void const *pArgument)
   GPIO_PinState lCurrentState = GPIO_PIN_SET;
   GPIO_PinState lLastState = GPIO_PIN_SET;
 
-  printf("Starting ProcessTask");
+  printf("Starting ProcessTask\n");
 
   for(;;)
   {
 	if(PushButtonMessageQueueGet(&stEvent) != RET_FAILURE)
 	{
 		lCurrentState = stEvent.value.v;
-		printf("lCurrentState %d\n", lCurrentState);
+		//printf("lCurrentState - ProcessTask %d\n", lCurrentState);
+		//printf("lLastState - ProcessTask %d\n", lLastState);
 
 		if(lCurrentState != lLastState)
 		{
 			if(lCurrentState == GPIO_PIN_RESET)
 			{
 				printf("Push Button pressed\n");
-				LedSemaphoreRelease();
+				ProcessTaskSignalSet(LedThreadId1, SIGNAL_LED_TOGGLE1);
 			}
 			else
 			{
 				printf("Push Button Released\n");
+				ProcessTaskSignalSet(LedThreadId2, SIGNAL_LED_TOGGLE2);
 			}
 
 			lLastState = lCurrentState;
+			printf("lLastState - ProcessTask %d\n", lLastState);
+		}
+		else
+		{
+			//printf("State Same\n");
 		}
 	}
 
 	 osDelay(5);
   }
+}
+
+//******************************.ProcessTaskSignalSet.**************************
+//Purpose : To set event signal
+//Inputs  : ThreadId - Thread Id of the waiting thread
+//Outputs : None
+//Return  : Boolean value - Upon success it will return true , else false
+//Notes   : None
+//*
+bool ProcessTaskSignalSet(osThreadId ThreadId, int32_t Signal)
+{
+	bool blRet = RET_FAILURE;
+
+	blRet = SignalSet(ThreadId, Signal);
+
+	return blRet;
+}
+
+//*****************************.ProcessTaskSignalWait.**************************
+//Purpose : To wait for event signal
+//Inputs  : None
+//Outputs : None
+//Return  : Boolean value - Upon success it will return true , else false
+//Notes   : None
+//*
+bool ProcessTaskSignalWait(int32_t Signal, osEvent* Evt)
+{
+	bool blRet = RET_FAILURE;
+
+	blRet = SignalWait(Signal, Evt);
+
+	return blRet;
+}
+
+//*****************************.ProcessTaskSignalClear.*************************
+//Purpose : To clear event signal
+//Inputs  : None
+//Outputs : None
+//Return  : Boolean value - Upon success it will return true , else false
+//Notes   : None
+//*
+bool ProcessTaskSignalClear(osThreadId ThreadId, int32_t Signal)
+{
+	bool blRet = RET_FAILURE;
+
+	blRet = SignalClear(ThreadId, Signal);
+
+	return blRet;
 }
 //EOF

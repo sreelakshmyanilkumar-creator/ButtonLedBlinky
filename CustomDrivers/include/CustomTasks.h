@@ -21,7 +21,7 @@
 #include "cmsis_os.h"
 
 //***************************** Global Constants *******************************
-#define STACK_SIZE		(1024)
+#define STACK_SIZE		(512)
 #define NAME_SIZE		(50)
 #define INSTANCE_NUMBER	(1)
 
@@ -43,6 +43,12 @@ extern uint32_t ReadPushButtonTaskStack[STACK_SIZE];
 
 extern StaticTask_t ProcessTaskTCB;
 extern uint32_t ProcessTaskStack[STACK_SIZE];
+
+extern StaticTask_t stLedBlinkyTask1TCB;
+extern uint32_t ulLedBlinkyTask1Stack[STACK_SIZE];
+
+extern StaticTask_t stLedBlinkyTask2TCB;
+extern uint32_t ulLedBlinkyTask2Stack[STACK_SIZE];
 
 //**************************** Forward Declarations ****************************
 bool CustomCreateTasks();

@@ -34,8 +34,11 @@ uint32_t ulReadPushButtonTaskStack[STACK_SIZE] = {0};
 StaticTask_t stProcessTaskTCB = {0};
 uint32_t ulProcessTaskStack[STACK_SIZE] = {0};
 
-StaticTask_t stLedBlinkyTaskTCB = {0};
-uint32_t ulLedBlinkyTaskStack[STACK_SIZE] = {0};
+StaticTask_t stLedBlinkyTask1TCB = {0};
+uint32_t ulLedBlinkyTask1Stack[STACK_SIZE] = {0};
+
+StaticTask_t stLedBlinkyTask2TCB = {0};
+uint32_t ulLedBlinkyTask2Stack[STACK_SIZE] = {0};
 
 THREAD_HANDLER ThreadHandler[] = {
     {
@@ -58,11 +61,20 @@ THREAD_HANDLER ThreadHandler[] = {
     },
     {
         .lThreadId = NULL,
-        .func = LedBlinkyTask,
-        .pucThreadName = "LedBlinkyTask",
-        .priority = osPriorityLow,
-        .pStaticTCB = &stLedBlinkyTaskTCB,
-        .pStackBuffer = ulLedBlinkyTaskStack,
+        .func = LedBlinkyTask1,
+        .pucThreadName = "LedBlinkyTask1",
+        .priority = osPriorityNormal,
+        .pStaticTCB = &stLedBlinkyTask1TCB,
+        .pStackBuffer = ulLedBlinkyTask1Stack,
+        .stackSize = STACK_SIZE
+    },
+    {
+        .lThreadId = NULL,
+        .func = LedBlinkyTask2,
+        .pucThreadName = "LedBlinkyTask2",
+        .priority = osPriorityNormal,
+        .pStaticTCB = &stLedBlinkyTask2TCB,
+        .pStackBuffer = ulLedBlinkyTask2Stack,
         .stackSize = STACK_SIZE
     }
 };

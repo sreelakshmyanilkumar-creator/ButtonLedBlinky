@@ -52,12 +52,12 @@ void ReadPushButtonTask(void const *pArgument)
 	  printf("Queue Created Successfully\n");
   }
 
-  printf("Starting ReadPushButtonTask");
+  printf("Starting ReadPushButtonTask\n");
 
   for(;;)
   {
 	  lCurrentState = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
-	   printf("lCurrentState %d\n", lCurrentState);
+	   //printf("lCurrentState - PushButtonTask %d\n", lCurrentState);
 	   PushButtonMessageQueuePut(&lCurrentState);
 	  osDelay(5);
   }
