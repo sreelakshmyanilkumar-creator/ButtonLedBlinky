@@ -28,7 +28,7 @@
 //**************************** Forward Declarations ****************************
 void ProcessTask(void const * argument);
 bool ProcessTaskSignalSet(osThreadId ThreadId, int32_t Signal);
-bool ProcessTaskSignalWait(int32_t Signal, osEvent* Evt);
+bool ProcessTaskSignalWait(int32_t Signal, osEvent* pstEvt);
 bool ProcessTaskSignalClear(osThreadId ThreadId, int32_t Signal);
 
 #endif //_PROCESS_H_

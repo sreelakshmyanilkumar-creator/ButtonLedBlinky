@@ -28,7 +28,7 @@
 void ReadPushButtonTask(void const * argument);
 bool PushButtonMessageQueueCreate(osThreadId PushButtonThreadId);
 bool PushButtonMessageQueuePut(GPIO_PinState *PushButtonState);
-bool PushButtonMessageQueueGet(osEvent *stEvent);
+bool PushButtonMessageQueueGet(osEvent *pstEvent);
 
 #endif //_PUSH_BUTTON_H_
 //EOF

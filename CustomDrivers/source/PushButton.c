@@ -86,11 +86,14 @@ bool PushButtonMessageQueueCreate(osThreadId PushButtonThreadId)
 //Return  : Boolean value - Upon success it will return true , else false
 //Notes   : None
 //*
-bool PushButtonMessageQueuePut(GPIO_PinState *PushButtonState)
+bool PushButtonMessageQueuePut(GPIO_PinState *pucPushButtonState)
 {
 	bool blRet = RET_FAILURE;
 
-	blRet = MessageQueuePut(PushButtonState);
+	if(pucPushButtonState != NULL)
+	{
+		blRet = MessageQueuePut(pucPushButtonState);
+	}
 
 	return blRet;
 }
@@ -102,11 +105,14 @@ bool PushButtonMessageQueuePut(GPIO_PinState *PushButtonState)
 //Return  : Boolean value - Upon success it will return true , else false
 //Notes   : None
 //*
-bool PushButtonMessageQueueGet(osEvent *stEvent)
+bool PushButtonMessageQueueGet(osEvent *pstEvent)
 {
 	bool blRet = RET_FAILURE;
 
-	blRet = MessageQueueGet(stEvent);
+	if(pstEvent != NULL)
+	{
+		blRet = MessageQueueGet(pstEvent);
+	}
 
 	return blRet;
 }

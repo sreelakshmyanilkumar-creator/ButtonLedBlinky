@@ -98,11 +98,14 @@ bool ProcessTaskSignalSet(osThreadId ThreadId, int32_t Signal)
 //Return  : Boolean value - Upon success it will return true , else false
 //Notes   : None
 //*
-bool ProcessTaskSignalWait(int32_t Signal, osEvent* Evt)
+bool ProcessTaskSignalWait(int32_t Signal, osEvent* pstEvt)
 {
 	bool blRet = RET_FAILURE;
 
-	blRet = SignalWait(Signal, Evt);
+	if(pstEvt != NULL)
+	{
+		blRet = SignalWait(Signal, pstEvt);
+	}
 
 	return blRet;
 }

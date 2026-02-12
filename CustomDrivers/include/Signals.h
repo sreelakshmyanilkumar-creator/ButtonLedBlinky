@@ -29,7 +29,7 @@
 
 //**************************** Forward Declarations ****************************
 bool SignalSet(osThreadId ThreadId, int32_t Signal);
-bool SignalWait(int32_t Signal, osEvent* Evt);
+bool SignalWait(int32_t Signal, osEvent* pstEvt);
 bool SignalClear(osThreadId ThreadId, int32_t Signal);
 
 #endif //_SIGNALS_H_

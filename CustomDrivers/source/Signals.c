@@ -56,19 +56,22 @@ bool SignalSet(osThreadId ThreadId, int32_t Signal)
 //**********************************.SignalWait.********************************
 //Purpose : To wait for the event signal
 //Inputs  : Signal - Signal flag
-//			Evt - osEvent structure variable
+//			stEvt - osEvent structure variable
 //Return  : Boolean value - Upon success it will return true , else false
 //Notes   : None
 //*
-bool SignalWait(int32_t Signal, osEvent* Evt)
+bool SignalWait(int32_t Signal, osEvent* pstEvt)
 {
 	bool blRet = RET_FAILURE;
 
-	*Evt = osSignalWait(Signal, osWaitForever);
-
-	if(Evt->status == osOK)
+	if(pstEvt != NULL)
 	{
-		blRet = RET_SUCCESS;
+		*pstEvt = osSignalWait(Signal, osWaitForever);
+
+		if(pstEvt->status == osOK)
+		{
+			blRet = RET_SUCCESS;
+		}
 	}
 
 	return blRet;
