@@ -1,3 +1,0 @@
-../CustomDrivers/source/CustomGpio.c:40:6:CustomGpioInit	16	static
-../CustomDrivers/source/CustomGpio.c:61:13:CustomGpioButton	32	static
-../CustomDrivers/source/CustomGpio.c:86:13:CustomGpioLed	32	static

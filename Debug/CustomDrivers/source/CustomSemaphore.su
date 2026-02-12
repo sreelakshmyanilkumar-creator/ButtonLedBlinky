@@ -1,3 +1,0 @@
-../CustomDrivers/source/CustomSemaphore.c:43:6:SemaphoreCreate	24	static
-../CustomDrivers/source/CustomSemaphore.c:67:6:SemaphoreWait	16	static
-../CustomDrivers/source/CustomSemaphore.c:89:10:SemaphoreRelease	16	static
