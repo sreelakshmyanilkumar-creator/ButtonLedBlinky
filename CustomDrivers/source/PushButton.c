@@ -89,7 +89,10 @@ bool PushButtonMessageQueuePut(GPIO_PinState *PushButtonState)
 {
 	bool blRet = RET_FAILURE;
 
-	blRet = MessageQueuePut(PushButtonState);
+	if(PushButtonState != NULL)
+	{
+		blRet = MessageQueuePut(PushButtonState);
+	}
 
 	return blRet;
 }
@@ -105,7 +108,10 @@ bool PushButtonMessageQueueGet(osEvent *stEvent)
 {
 	bool blRet = RET_FAILURE;
 
-	blRet = MessageQueueGet(stEvent);
+	if(stEvent != NULL)
+	{
+		blRet = MessageQueueGet(stEvent);
+	}
 
 	return blRet;
 }

@@ -66,10 +66,6 @@ void ProcessTask(void const *pArgument)
 
 			lLastState = lCurrentState;
 		}
-		else
-		{
-			printf("same\n");
-		}
 	}
 
 	 osDelay(5);

@@ -71,7 +71,13 @@ bool MessageQueuePut(GPIO_PinState *GpioPinState)
 {
 	bool blRet = RET_FAILURE;
 
-	osMessagePut(MessageQueueID, *GpioPinState, osWaitForever);
+	if(GpioPinState != NULL)
+	{
+		if(osMessagePut(MessageQueueID, *GpioPinState, osWaitForever) == osOK)
+		{
+			blRet = RET_SUCCESS;
+		}
+	}
 
 	return blRet;
 }
@@ -87,12 +93,15 @@ bool MessageQueueGet(osEvent *stEvent)
 {
 	bool blRet = RET_FAILURE;
 
-	*stEvent = osMessageGet(MessageQueueID, QUEUE_TIMEOUT);
-
-	while(stEvent != NULL && stEvent->status == osEventMessage )
+	if(stEvent != NULL)
 	{
-		blRet = RET_SUCCESS;
-		break;
+		*stEvent = osMessageGet(MessageQueueID, QUEUE_TIMEOUT);
+
+		while(stEvent != NULL && stEvent->status == osEventMessage )
+		{
+			blRet = RET_SUCCESS;
+			break;
+		}
 	}
 
 	return blRet;
