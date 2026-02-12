@@ -1,0 +1,3 @@
+../CustomDrivers/source/MessageQueue.c:44:6:MessageQueueCreate	2
+../CustomDrivers/source/MessageQueue.c:70:6:MessageQueuePut	1
+../CustomDrivers/source/MessageQueue.c:86:6:MessageQueueGet	3

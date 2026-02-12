@@ -1,0 +1,5 @@
+../CustomDrivers/source/Led.c:40:6:LedBlinkyTask	16	static
+../CustomDrivers/source/Led.c:63:6:LedSemaphoreInit	16	static
+../CustomDrivers/source/Led.c:79:6:LedSemaphoreWait	16	static
+../CustomDrivers/source/Led.c:95:10:LedSemaphoreRelease	16	static
+../CustomDrivers/source/Led.c:112:6:LedBlinkPattern	16	static

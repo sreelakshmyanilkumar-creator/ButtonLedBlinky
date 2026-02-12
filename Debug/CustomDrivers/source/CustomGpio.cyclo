@@ -1,0 +1,3 @@
+../CustomDrivers/source/CustomGpio.c:40:6:CustomGpioInit	2
+../CustomDrivers/source/CustomGpio.c:61:13:CustomGpioButton	1
+../CustomDrivers/source/CustomGpio.c:86:13:CustomGpioLed	1
